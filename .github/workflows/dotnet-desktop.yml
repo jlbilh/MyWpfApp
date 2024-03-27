@@ -100,14 +100,14 @@ jobs:
     # Test echo
     - name: test echo
       run: |
-        & echo '$env:Solution_Name /t:Restore /p:Configuration=$env:Configuration /p:RuntimeIdentifiers="win-x64;win-x86"'
+        & echo $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration /p:RuntimeIdentifiers='"win-x64;win-x86"'
       env:
         Configuration: ${{ matrix.configuration }}
 
     # Restore the application to populate the obj folder with RuntimeIdentifiers
     - name: Restore the application
       run: |
-        & 'msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration /p:RuntimeIdentifiers="win-x64;win-x86"'
+        & msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration /p:RuntimeIdentifiers='"win-x64;win-x86"'
       env:
         Configuration: ${{ matrix.configuration }}
 
