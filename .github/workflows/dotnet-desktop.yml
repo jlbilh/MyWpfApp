@@ -89,7 +89,7 @@ jobs:
 
     # Test echo
     - name: Test echo
-      run: echo $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration /p:RuntimeIdentifiers=\"$env:RuntimeIdentifiers\"
+      run: echo $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration /p:RuntimeIdentifiers=\\"$env:RuntimeIdentifiers\\"
       env:
         Configuration: ${{ matrix.configuration }}
 
@@ -109,6 +109,6 @@ jobs:
 
     # Restore the application to populate the obj folder with RuntimeIdentifiers
     - name: Restore the application
-      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration /p:RuntimeIdentifiers=\"$env:RuntimeIdentifiers\"
+      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration /p:RuntimeIdentifiers=\\"$env:RuntimeIdentifiers\\"
       env:
         Configuration: ${{ matrix.configuration }}
