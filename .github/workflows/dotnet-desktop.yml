@@ -89,7 +89,8 @@ jobs:
 
     # Test echo
     - name: Test echo
-      run: echo $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration /p:RuntimeIdentifiers=\\"$env:RuntimeIdentifiers\\"
+      run: >
+        echo $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration /p:RuntimeIdentifiers="$env:RuntimeIdentifiers"
       env:
         Configuration: ${{ matrix.configuration }}
 
